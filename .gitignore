@@ -1,0 +1,33 @@
+# Project-wide ignores
+
+# IDE
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build outputs (backend)
+backend/target/
+
+# Node modules (web)
+web/node_modules/
+
+# Environment files
+.env
+.env.local
+.env*.local
+
+# Backend configuration with sensitive data
+backend/src/main/resources/application.properties
+backend/src/main/resources/application-*.properties
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
