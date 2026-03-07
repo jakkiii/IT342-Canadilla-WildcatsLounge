@@ -18,7 +18,18 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        poppins: ["var(--font-poppins)", "sans-serif"],
+      },
       colors: {
+        wc: {
+          blue:   "#001C98",
+          cream:  "#FDFBF7",
+          latte:  "#E5D3B3",
+          green:  "#10B981",
+          yellow: "#F59E0B",
+          red:    "#EF4444",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

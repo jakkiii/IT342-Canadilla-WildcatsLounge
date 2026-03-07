@@ -3,31 +3,41 @@ import axios from 'axios';
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api';
 
 export interface RegisterData {
-  name: string;
   email: string;
   password: string;
+  firstname: string;
+  lastname: string;
+  studentId?: string;
 }
 
 export interface LoginData {
-  email: string;
+  identifier: string; // email address or student_id
   password: string;
 }
 
-export interface UserResponse {
-  id: number;
-  name: string;
+export interface UserData {
   email: string;
-  createdAt: string;
+  firstname: string;
+  lastname: string;
+  studentId?: string;
+  role?: string;
+}
+
+export interface AuthData {
+  user: UserData;
+  accessToken: string;
+  refreshToken: string;
 }
 
 export interface ApiResponse<T = any> {
   success: boolean;
-  message: string;
   data?: T;
+  error?: string;
+  timestamp?: string;
 }
 
 // Register a new user
-export const register = async (data: RegisterData): Promise<ApiResponse<UserResponse>> => {
+export const register = async (data: RegisterData): Promise<ApiResponse<AuthData>> => {
   try {
     const response = await axios.post(`${API_URL}/auth/register`, data);
     return response.data;
@@ -35,15 +45,12 @@ export const register = async (data: RegisterData): Promise<ApiResponse<UserResp
     if (error.response?.data) {
       return error.response.data;
     }
-    return {
-      success: false,
-      message: error.message || 'Registration failed'
-    };
+    return { success: false, error: error.message || 'Registration failed' };
   }
 };
 
-// Login user
-export const login = async (data: LoginData): Promise<ApiResponse<UserResponse>> => {
+// Login user — identifier can be email or student_id
+export const login = async (data: LoginData): Promise<ApiResponse<AuthData>> => {
   try {
     const response = await axios.post(`${API_URL}/auth/login`, data);
     return response.data;
@@ -51,10 +58,7 @@ export const login = async (data: LoginData): Promise<ApiResponse<UserResponse>>
     if (error.response?.data) {
       return error.response.data;
     }
-    return {
-      success: false,
-      message: error.message || 'Login failed'
-    };
+    return { success: false, error: error.message || 'Login failed' };
   }
 };
 
@@ -64,9 +68,6 @@ export const checkHealth = async (): Promise<ApiResponse> => {
     const response = await axios.get(`${API_URL}/auth/health`);
     return response.data;
   } catch (error: any) {
-    return {
-      success: false,
-      message: 'API is not reachable'
-    };
+    return { success: false, error: 'API is not reachable' };
   }
 };

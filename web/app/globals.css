@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --background: 40 50% 98%;       /* Cream #FDFBF7 */
+    --foreground: 229 100% 12%;     /* Deep navy */
+    --card: 40 50% 98%;
+    --card-foreground: 229 100% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
+    --popover-foreground: 229 100% 12%;
+    --primary: 229 100% 30%;        /* Wildcats Blue #001C98 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 38 43% 88%;        /* Latte #E5D3B3 */
+    --secondary-foreground: 229 100% 20%;
+    --muted: 38 30% 93%;
+    --muted-foreground: 229 20% 45%;
+    --accent: 38 43% 88%;
+    --accent-foreground: 229 100% 20%;
+    --destructive: 0 84% 60%;       /* Berry Red #EF4444 */
+    --destructive-foreground: 0 0% 100%;
+    --border: 38 30% 88%;
+    --input: 38 30% 88%;
+    --ring: 229 100% 30%;
+    --radius: 0.75rem;
   }
 
   .dark {
@@ -55,5 +55,27 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-poppins), sans-serif;
   }
+}
+
+/* Wildcats Lounge — animated gradient panel */
+@keyframes gradientShift {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+.gradient-animated {
+  background: linear-gradient(
+    135deg,
+    #001C98 0%,
+    #0030d4 20%,
+    #1565c0 40%,
+    #1a237e 60%,
+    #000d6b 80%,
+    #001C98 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
 }

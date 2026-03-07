@@ -18,13 +18,22 @@ public class User {
     private Long id;
     
     @Column(nullable = false, length = 100)
-    private String name;
-    
+    private String firstname;
+
+    @Column(nullable = false, length = 100)
+    private String lastname;
+
     @Column(nullable = false, unique = true, length = 100)
     private String email;
-    
+
+    @Column(name = "student_id", unique = true, length = 20)
+    private String studentId;
+
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false, length = 20)
+    private String role;
     
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;

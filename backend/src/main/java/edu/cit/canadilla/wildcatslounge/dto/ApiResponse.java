@@ -1,32 +1,32 @@
 package edu.cit.canadilla.wildcatslounge.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
 @Data
-@AllArgsConstructor
 public class ApiResponse {
-    
+
     private boolean success;
-    private String message;
     private Object data;
-    
-    public ApiResponse(boolean success, String message) {
+    private String error;
+    private String timestamp;
+
+    public ApiResponse(boolean success, Object data, String error) {
         this.success = success;
-        this.message = message;
-        this.data = null;
+        this.data = data;
+        this.error = error;
+        this.timestamp = ZonedDateTime.now(ZoneOffset.UTC)
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'"));
     }
-    
-    // Static helper methods for common responses
-    public static ApiResponse success(String message) {
-        return new ApiResponse(true, message);
+
+    public static ApiResponse success(Object data) {
+        return new ApiResponse(true, data, null);
     }
-    
-    public static ApiResponse success(String message, Object data) {
-        return new ApiResponse(true, message, data);
-    }
-    
-    public static ApiResponse error(String message) {
-        return new ApiResponse(false, message);
+
+    public static ApiResponse error(String error) {
+        return new ApiResponse(false, null, error);
     }
 }

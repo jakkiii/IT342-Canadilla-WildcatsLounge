@@ -1,9 +1,9 @@
 package edu.cit.canadilla.wildcatslounge.controller;
 
 import edu.cit.canadilla.wildcatslounge.dto.ApiResponse;
+import edu.cit.canadilla.wildcatslounge.dto.AuthResponse;
 import edu.cit.canadilla.wildcatslounge.dto.LoginRequest;
 import edu.cit.canadilla.wildcatslounge.dto.RegisterRequest;
-import edu.cit.canadilla.wildcatslounge.dto.UserResponse;
 import edu.cit.canadilla.wildcatslounge.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -54,9 +54,9 @@ public class AuthController {
         }
         
         try {
-            UserResponse userResponse = userService.registerUser(request);
+            AuthResponse authResponse = userService.registerUser(request);
             return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(ApiResponse.success("User registered successfully", userResponse));
+                    .body(ApiResponse.success(authResponse));
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest()
                     .body(ApiResponse.error(e.getMessage()));
@@ -84,9 +84,8 @@ public class AuthController {
         }
         
         try {
-            UserResponse userResponse = userService.loginUser(request);
-            return ResponseEntity.ok(
-                    ApiResponse.success("Login successful", userResponse));
+            AuthResponse authResponse = userService.loginUser(request);
+            return ResponseEntity.ok(ApiResponse.success(authResponse));
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(ApiResponse.error(e.getMessage()));

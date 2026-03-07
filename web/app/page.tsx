@@ -1,100 +1,97 @@
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { UserPlus, LogIn, Home } from 'lucide-react';
+import { Coffee, Check, UserPlus, LogIn } from 'lucide-react';
+
+const features = [
+  'Secure user registration with email validation',
+  'Password encryption using BCrypt',
+  'User authentication and session management',
+  'Modern UI built with Next.js and shadcn/ui',
+  'RESTful API backend with Spring Boot',
+];
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <div className="flex justify-center mb-6">
-            <div className="bg-primary text-primary-foreground p-4 rounded-full">
-              <Home className="w-12 h-12" />
+    <div className="min-h-screen flex flex-col lg:flex-row font-poppins">
+
+      {/* ── LEFT PANEL — animated gradient ── */}
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden flex-col items-center justify-center p-14 gradient-animated">
+        {/* Decorative blobs */}
+        <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-white/10 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-white/5 blur-3xl pointer-events-none" />
+        <div className="absolute top-1/3 right-1/4 w-48 h-48 rounded-full bg-blue-300/10 blur-2xl pointer-events-none" />
+
+        <div className="relative z-10 text-white max-w-md w-full">
+          <div className="flex items-center gap-3 mb-10">
+            <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-lg">
+              <Coffee className="w-6 h-6 text-white" />
+            </div>
+            <span className="text-xl font-bold tracking-wide">Wildcats Lounge</span>
+          </div>
+
+          <h1 className="text-5xl font-extrabold leading-tight mb-4">
+            Your campus<br />
+            hangout,<br />
+            <span className="text-blue-200">reimagined.</span>
+          </h1>
+          <p className="text-white/70 text-sm mb-10">
+            A secure, modern platform for CIT-U Technologians and Staff.
+          </p>
+
+          <div className="space-y-3">
+            {features.map((f) => (
+              <div key={f} className="flex items-start gap-3">
+                <div className="mt-0.5 w-5 h-5 rounded-full bg-[#10B981]/30 flex items-center justify-center flex-shrink-0 border border-[#10B981]/40">
+                  <Check className="w-3 h-3 text-[#10B981]" />
+                </div>
+                <span className="text-white/85 text-sm">{f}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── RIGHT PANEL ── */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center bg-[#FDFBF7] px-8 py-16 lg:px-16">
+        <div className="w-full max-w-sm">
+          {/* Mobile logo */}
+          <div className="flex lg:hidden items-center gap-2 mb-10">
+            <div className="w-9 h-9 rounded-xl bg-[#001C98] flex items-center justify-center">
+              <Coffee className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-lg font-bold text-[#001C98]">Wildcats Lounge</span>
+          </div>
+
+          <h2 className="text-3xl font-bold text-[#001C98] mb-2">Get Started</h2>
+          <p className="text-gray-500 text-sm mb-10">
+            Join Wildcats Lounge or sign in to your account.
+          </p>
+
+          <div className="space-y-4">
+            <Link href="/register" className="block">
+              <button className="w-full flex items-center justify-center gap-2 bg-[#001C98] hover:bg-[#0025B8] text-white font-semibold py-3.5 px-6 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-[0.99]">
+                <UserPlus className="w-5 h-5" />
+                Create an Account
+              </button>
+            </Link>
+            <Link href="/login" className="block">
+              <button className="w-full flex items-center justify-center gap-2 bg-white hover:bg-[#E5D3B3]/40 text-[#001C98] font-semibold py-3.5 px-6 rounded-xl border-2 border-[#001C98]/20 hover:border-[#001C98]/50 transition-all">
+                <LogIn className="w-5 h-5" />
+                Sign In
+              </button>
+            </Link>
+          </div>
+
+          <div className="mt-12 p-5 bg-[#E5D3B3]/30 rounded-2xl border border-[#E5D3B3]">
+            <p className="text-xs font-semibold text-[#001C98] uppercase tracking-wider mb-3">Platform Features</p>
+            <div className="space-y-2">
+              {features.map((f) => (
+                <div key={f} className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-[#10B981] flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600 text-xs">{f}</span>
+                </div>
+              ))}
             </div>
           </div>
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">
-            Welcome to Wildcats Lounge
-          </h1>
-          <p className="text-xl text-gray-600 mb-8">
-            Your secure user management platform
-          </p>
-        </div>
-
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
-          <Card className="hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="flex items-center justify-center mb-4">
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <UserPlus className="w-8 h-8 text-blue-600" />
-                </div>
-              </div>
-              <CardTitle className="text-center text-2xl">New User?</CardTitle>
-              <CardDescription className="text-center">
-                Create a new account to get started
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="text-center">
-              <Link href="/register">
-                <Button size="lg" className="w-full">
-                  Register Now
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="flex items-center justify-center mb-4">
-                <div className="bg-green-100 p-3 rounded-full">
-                  <LogIn className="w-8 h-8 text-green-600" />
-                </div>
-              </div>
-              <CardTitle className="text-center text-2xl">Existing User?</CardTitle>
-              <CardDescription className="text-center">
-                Login to access your account
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="text-center">
-              <Link href="/login">
-                <Button size="lg" variant="outline" className="w-full">
-                  Login
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="mt-12 max-w-2xl mx-auto">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-center">Features</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span>Secure user registration with email validation</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span>Password encryption using BCrypt</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span>User authentication and session management</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span>Modern UI built with Next.js and shadcn/ui</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span>RESTful API backend with Spring Boot</span>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </div>

@@ -38,4 +38,7 @@ mvnw
 mvnw.cmd
 
 ### Application ###
+application.properties
 application-local.properties
+.env
+!.env.example
