@@ -1,13 +1,5 @@
 import Link from 'next/link';
-import { Coffee, Check, UserPlus, LogIn } from 'lucide-react';
-
-const features = [
-  'Secure user registration with email validation',
-  'Password encryption using BCrypt',
-  'User authentication and session management',
-  'Modern UI built with Next.js and shadcn/ui',
-  'RESTful API backend with Spring Boot',
-];
+import { Coffee, UserPlus, LogIn } from 'lucide-react';
 
 export default function HomePage() {
   return (
@@ -33,20 +25,9 @@ export default function HomePage() {
             hangout,<br />
             <span className="text-blue-200">reimagined.</span>
           </h1>
-          <p className="text-white/70 text-sm mb-10">
+          <p className="text-white/70 text-sm">
             A secure, modern platform for CIT-U Technologians and Staff.
           </p>
-
-          <div className="space-y-3">
-            {features.map((f) => (
-              <div key={f} className="flex items-start gap-3">
-                <div className="mt-0.5 w-5 h-5 rounded-full bg-[#10B981]/30 flex items-center justify-center flex-shrink-0 border border-[#10B981]/40">
-                  <Check className="w-3 h-3 text-[#10B981]" />
-                </div>
-                <span className="text-white/85 text-sm">{f}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
@@ -81,17 +62,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="mt-12 p-5 bg-[#E5D3B3]/30 rounded-2xl border border-[#E5D3B3]">
-            <p className="text-xs font-semibold text-[#001C98] uppercase tracking-wider mb-3">Platform Features</p>
-            <div className="space-y-2">
-              {features.map((f) => (
-                <div key={f} className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-[#10B981] flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-600 text-xs">{f}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

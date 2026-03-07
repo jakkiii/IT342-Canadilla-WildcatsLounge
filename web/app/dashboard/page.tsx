@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { UserCircle, Mail, Hash, Shield, LogOut, Coffee, Check } from 'lucide-react';
 import type { UserData } from '@/lib/api';
 
@@ -135,69 +133,6 @@ export default function DashboardPage() {
           </div>
         </div>
       </main>
-    </div>
-  );
-}
-      <div className="max-w-4xl mx-auto pt-12">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900">Wildcats Lounge</h1>
-          <Button variant="outline" onClick={handleLogout}>
-            <LogOut className="mr-2 h-4 w-4" />
-            Logout
-          </Button>
-        </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl">Welcome to your Dashboard!</CardTitle>
-            <CardDescription>You have successfully logged in</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="flex items-center space-x-4 p-4 bg-muted rounded-lg">
-              <UserCircle className="w-12 h-12 text-primary" />
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Name</p>
-                <p className="text-lg font-semibold">{user.firstname} {user.lastname}</p>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-4 p-4 bg-muted rounded-lg">
-              <Mail className="w-12 h-12 text-primary" />
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Email</p>
-                <p className="text-lg font-semibold">{user.email}</p>
-              </div>
-            </div>
-
-            {user.studentId && (
-              <div className="flex items-center space-x-4 p-4 bg-muted rounded-lg">
-                <Hash className="w-12 h-12 text-primary" />
-                <div>
-                  <p className="text-sm font-medium text-muted-foreground">Student ID</p>
-                  <p className="text-lg font-semibold">{user.studentId}</p>
-                </div>
-              </div>
-            )}
-
-            {user.role && (
-              <div className="flex items-center space-x-4 p-4 bg-muted rounded-lg">
-                <Shield className="w-12 h-12 text-primary" />
-                <div>
-                  <p className="text-sm font-medium text-muted-foreground">Role</p>
-                  <p className="text-lg font-semibold capitalize">{user.role}</p>
-                </div>
-              </div>
-            )}
-
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <p className="text-green-800 font-medium">✓ Login Successful</p>
-              <p className="text-green-700 text-sm mt-1">
-                You are now logged in to the Wildcats Lounge platform.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
     </div>
   );
 }
