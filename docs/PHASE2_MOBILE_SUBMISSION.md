@@ -12,10 +12,10 @@ Current Hash (before final submission commit):
 `1df1bea`
 
 Final Commit Hash:  
-`<PASTE_FINAL_COMMIT_HASH_HERE>`
+`dcb3661`
 
 Final Commit Link:  
-https://github.com/jakkiii/IT342-Canadilla-WildcatsLounge/commit/<PASTE_FINAL_COMMIT_HASH_HERE>
+https://github.com/jakkiii/IT342-Canadilla-WildcatsLounge/commit/dcb3661
 
 ## 4. Short Summary (1 Page)
 ### How Registration Works
