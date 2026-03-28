@@ -1,28 +1,33 @@
-# Wildcats Lounge - Backend API
+﻿# Wildcats Lounge - Backend API
 
-Spring Boot REST API for user authentication and management.
+Spring Boot REST API for Wildcats Lounge authentication and user management.
 
 ## Technology Stack
 - **Framework:** Spring Boot 3.5.0
 - **Build Tool:** Maven
-- **Database:** MySQL 8.0
+- **Database:** PostgreSQL (Supabase)
 - **Java Version:** 17
-- **Architecture:** Layered (Controller → Service → Repository)
+- **Architecture:** Layered (Controller -> Service -> Repository)
 
 ## Prerequisites
 - Java JDK 17+
 - Apache Maven 3.6+
-- MySQL 8.0+ (running on port 3306)
+- Supabase PostgreSQL database
 
 ## Setup & Run
 
-### 1. Configure Database
+### 1. Configure Environment Variables
 
-Edit `src/main/resources/application.properties` if you set a MySQL password:
+Copy `src/main/resources/application.properties.template` and provide values through environment variables:
 
-```properties
-spring.datasource.password=YOUR_PASSWORD_HERE
-```
+- `DB_URL`
+- `DB_USERNAME`
+- `DB_PASSWORD`
+- `JWT_SECRET`
+
+Example DB URL format:
+
+`jdbc:postgresql://db.<your-project-ref>.supabase.co:5432/postgres`
 
 ### 2. Install Dependencies
 
@@ -36,7 +41,7 @@ mvn clean install
 mvn spring-boot:run
 ```
 
-The API will start on **http://localhost:8080**
+The API will start on **http://localhost:8080**.
 
 ## API Endpoints
 
@@ -51,9 +56,11 @@ POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
-  "name": "Juan Dela Cruz",
+  "firstname": "Juan",
+  "lastname": "Dela Cruz",
   "email": "juan@example.com",
-  "password": "password123"
+  "password": "password123",
+  "studentId": "22-1234-567"
 }
 ```
 
@@ -63,62 +70,51 @@ POST http://localhost:8080/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "juan@example.com",
+  "identifier": "juan@example.com",
   "password": "password123"
 }
 ```
 
+`identifier` can be an email address or student ID.
+
 ## Testing
 
-Use the `test-api.http` file with the REST Client extension in VS Code, or use tools like Postman.
+Use `test-api.http` in this folder, or test with Postman/cURL.
 
 ## Project Structure
 
 ```
 src/main/java/edu/cit/canadilla/wildcatslounge/
 ├── controller/          # REST API endpoints
-│   └── AuthController.java
 ├── service/             # Business logic
-│   └── UserService.java
 ├── repository/          # Database access
-│   └── UserRepository.java
 ├── entity/              # JPA entities
-│   └── User.java
 ├── dto/                 # Data Transfer Objects
-│   ├── RegisterRequest.java
-│   ├── LoginRequest.java
-│   ├── UserResponse.java
-│   └── ApiResponse.java
 └── util/                # Utilities
-    └── PasswordUtil.java
 ```
 
 ## Database Schema
 
 **Table:** `users`
 
-| Column      | Type         | Constraints           |
-|-------------|--------------|------------------------|
-| id          | BIGINT       | PRIMARY KEY, AUTO_INCREMENT |
-| name        | VARCHAR(100) | NOT NULL              |
-| email       | VARCHAR(100) | NOT NULL, UNIQUE      |
-| password    | VARCHAR(255) | NOT NULL              |
-| created_at  | DATETIME     | NOT NULL              |
-| updated_at  | DATETIME     |                       |
+| Column      | Type         | Constraints                      |
+|-------------|--------------|----------------------------------|
+| id          | BIGINT       | PRIMARY KEY, AUTO_INCREMENT      |
+| firstname   | VARCHAR(100) | NOT NULL                         |
+| lastname    | VARCHAR(100) | NOT NULL                         |
+| email       | VARCHAR(100) | NOT NULL, UNIQUE                 |
+| student_id  | VARCHAR(20)  | UNIQUE, NULLABLE                 |
+| password    | VARCHAR(255) | NOT NULL                         |
+| role        | VARCHAR(20)  | NOT NULL (`student` or `staff`)  |
+| created_at  | TIMESTAMP    | NOT NULL                         |
+| updated_at  | TIMESTAMP    | NOT NULL                         |
 
 ## Security Features
-- ✅ BCrypt password hashing
-- ✅ Email format validation
-- ✅ Password strength validation (min 6 characters)
-- ✅ Duplicate email prevention
-- ✅ CORS enabled for frontend
-
-## Documentation
-
-See the `../docs/` folder for comprehensive guides:
-- [TUTORIAL.md](../docs/TUTORIAL.md) - Complete backend tutorial
-- [DATABASE_SETUP.md](../docs/DATABASE_SETUP.md) - MySQL setup guide
-- [COMPLETE_GUIDE.md](../docs/COMPLETE_GUIDE.md) - Full project guide
+- BCrypt password hashing
+- Input validation (email/password/student ID format)
+- Duplicate checks for email and student ID
+- JWT access and refresh token generation
+- CORS enabled for frontend/mobile access
 
 ## Maven Commands
 
@@ -134,20 +130,4 @@ mvn clean package
 
 # Run tests
 mvn test
-
-# Skip tests
-mvn clean install -DskipTests
 ```
-
-## Environment Configuration
-
-Default configuration in `application.properties`:
-- Server Port: 8080
-- Database: wildcatslounge_db (auto-created)
-- MySQL Port: 3306
-- Username: root
-- Password: (empty)
-
----
-
-**Backend API is ready to serve requests!** 🚀

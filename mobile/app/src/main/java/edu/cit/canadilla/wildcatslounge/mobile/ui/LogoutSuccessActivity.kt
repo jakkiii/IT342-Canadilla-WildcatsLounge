@@ -1,0 +1,20 @@
+package edu.cit.canadilla.wildcatslounge.mobile.ui
+
+import android.content.Intent
+import android.os.Bundle
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import edu.cit.canadilla.wildcatslounge.mobile.R
+
+class LogoutSuccessActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_logout_success)
+
+        findViewById<Button>(R.id.btnReturnLogin).setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finishAffinity()
+        }
+    }
+}

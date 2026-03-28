@@ -17,6 +17,13 @@ backend/target/
 # Node modules (web)
 web/node_modules/
 
+# Android build outputs (mobile)
+mobile/.gradle/
+mobile/**/build/
+mobile/local.properties
+mobile/.idea/
+mobile/*.iml
+
 # Environment files
 .env
 .env.local
