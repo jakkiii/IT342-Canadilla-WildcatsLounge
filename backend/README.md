@@ -18,16 +18,26 @@ Spring Boot REST API for Wildcats Lounge authentication and user management.
 
 ### 1. Configure Environment Variables
 
-Copy `src/main/resources/application.properties.template` and provide values through environment variables:
+Copy `.env.example` to `.env` in the backend folder and provide values:
 
 - `DB_URL`
+- `DB_HOST`
+- `DB_PORT`
+- `DB_NAME`
 - `DB_USERNAME`
+- `DB_USERNAME_SUFFIX`
 - `DB_PASSWORD`
 - `JWT_SECRET`
 
 Example DB URL format:
 
 `jdbc:postgresql://db.<your-project-ref>.supabase.co:5432/postgres`
+
+If you use Supabase pooler and get `FATAL: Tenant or user not found`, use:
+
+- `DB_URL=jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres`
+- `DB_USERNAME=postgres`
+- `DB_USERNAME_SUFFIX=.<your-project-ref>`
 
 ### 2. Install Dependencies
 

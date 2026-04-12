@@ -62,7 +62,7 @@ export default function RegisterPage() {
       } else {
         setError(response.error || 'Registration failed');
       }
-    } catch (err) {
+    } catch {
       setError('An unexpected error occurred');
     } finally {
       setLoading(false);

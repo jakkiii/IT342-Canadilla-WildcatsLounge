@@ -54,6 +54,7 @@ public class UserService {
         String refreshToken = jwtUtil.generateRefreshToken(savedUser.getEmail());
 
         AuthResponse.UserData userData = new AuthResponse.UserData(
+            savedUser.getId(),
                 savedUser.getEmail(),
                 savedUser.getFirstname(),
                 savedUser.getLastname(),
@@ -91,6 +92,7 @@ public class UserService {
         String refreshToken = jwtUtil.generateRefreshToken(user.getEmail());
 
         AuthResponse.UserData userData = new AuthResponse.UserData(
+            user.getId(),
                 user.getEmail(),
                 user.getFirstname(),
                 user.getLastname(),

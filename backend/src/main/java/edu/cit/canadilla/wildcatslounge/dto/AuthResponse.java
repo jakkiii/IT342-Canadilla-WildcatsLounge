@@ -17,6 +17,7 @@ public class AuthResponse {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class UserData {
+        private Long id;
         private String email;
         private String firstname;
         private String lastname;

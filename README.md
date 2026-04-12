@@ -1,7 +1,6 @@
 # Wildcats Lounge - User Management System
 
-> **🔥 PROJECT RECENTLY UPDATED!** Now using **IntelliJ IDEA + Supabase** for simplified setup.  
-> **See:** [docs/PROJECT_UPDATED.md](docs/PROJECT_UPDATED.md) for what changed and why.
+> **🔥 PROJECT RECENTLY UPDATED!** Now using **IntelliJ IDEA + Supabase** for simplified setup.
 
 ---
 
@@ -118,10 +117,8 @@ Frontend starts at: http://localhost:3000
 - **[docs/CONFIGURATION_CHECK.md](docs/CONFIGURATION_CHECK.md)** - Verify project configuration
 - **[backend/test-api.http](backend/test-api.http)** - API test requests
 
-### 📁 Archived Guides (Old MySQL workflow)
-- `docs/MAVEN_SETUP.md` - Not needed (IntelliJ handles Maven)
-- `docs/DATABASE_SETUP.md` - Replaced by Supabase
-- `docs/TUTORIAL.md`, `docs/COMPLETE_GUIDE.md`, `docs/QUICK_START.md` - Outdated
+### 📁 Legacy Guides
+- Old MySQL and duplicate setup guides were removed to keep the repository focused on the current Supabase workflow.
 
 ---
 
@@ -379,13 +376,9 @@ Repository: IT342-Canadilla-WildcatsLounge
 **Current Phase:** Phase 1 - User Registration & Login ✅  
 **Database:** Supabase PostgreSQL (Cloud-hosted)  
 **IDE:** IntelliJ IDEA
-- 🗄️ **[docs/DATABASE_SETUP.md](docs/DATABASE_SETUP.md)** - MySQL setup guide
 - 🎨 **[docs/FRONTEND_SETUP.md](docs/FRONTEND_SETUP.md)** - Frontend setup with Next.js + shadcn/ui
-- 🚀 **[docs/QUICK_START.md](docs/QUICK_START.md)** - Quick setup guide
-- 📚 **[docs/COMPLETE_GUIDE.md](docs/COMPLETE_GUIDE.md)** - Complete setup walkthrough
 
 ### Project Information
-- 📖 **[docs/TUTORIAL.md](docs/TUTORIAL.md)** - Comprehensive backend tutorial
 - ✅ **[docs/CONFIGURATION_CHECK.md](docs/CONFIGURATION_CHECK.md)** - Verify project configuration
 - 🧪 **[backend/test-api.http](backend/test-api.http)** - API test requests
 

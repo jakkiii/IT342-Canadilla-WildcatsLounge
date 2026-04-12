@@ -81,7 +81,6 @@ frontend/
 See [docs/FRONTEND_SETUP.md](../docs/FRONTEND_SETUP.md) for complete setup guide.
 
 Also see:
-- [docs/COMPLETE_GUIDE.md](../docs/COMPLETE_GUIDE.md) - Full setup walkthrough
 - [Backend README](../backend/README.md) - Backend API documentation
 
 ---
