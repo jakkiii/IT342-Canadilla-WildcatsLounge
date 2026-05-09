@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Wildcats Lounge</string>
+	<string name="app_name">Wildcats Lounge</string>
+	<string name="label_login">Sign in</string>
+	<string name="label_register">Create account</string>
+	<string name="label_home">Home</string>
+	<string name="label_menu">Menu</string>
+	<string name="label_cart">Cart</string>
+	<string name="label_events">Events</string>
+	<string name="label_profile">Profile</string>
+	<string name="label_logout">Logout</string>
+	<string name="label_start_order">Start order</string>
+	<string name="label_place_order">Place order</string>
+	<string name="label_check_order">Check order</string>
+	<string name="label_description_hint">Tell us what you love about Wildcats Lounge</string>
 </resources>

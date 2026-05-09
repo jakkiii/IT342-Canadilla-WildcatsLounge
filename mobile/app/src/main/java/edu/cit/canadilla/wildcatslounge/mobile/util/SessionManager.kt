@@ -1,38 +1,40 @@
 package edu.cit.canadilla.wildcatslounge.mobile.util
 
 import android.content.Context
-import com.google.gson.Gson
-import edu.cit.canadilla.wildcatslounge.mobile.model.AuthData
+import edu.cit.canadilla.wildcatslounge.mobile.model.UserData
 
 class SessionManager(context: Context) {
+	private val prefs = context.getSharedPreferences("wildcats_session", Context.MODE_PRIVATE)
 
-    private val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+	fun saveSession(user: UserData, accessToken: String, refreshToken: String) {
+		prefs.edit()
+			.putLong("user_id", user.id)
+			.putString("user_email", user.email)
+			.putString("user_firstname", user.firstname)
+			.putString("user_lastname", user.lastname)
+			.putString("user_student_id", user.studentId)
+			.putString("user_role", user.role)
+			.putString("access_token", accessToken)
+			.putString("refresh_token", refreshToken)
+			.apply()
+	}
 
-    fun saveSession(authData: AuthData) {
-        prefs.edit()
-            .putString(KEY_AUTH_DATA, Gson().toJson(authData))
-            .putString(KEY_ACCESS_TOKEN, authData.accessToken)
-            .putString(KEY_REFRESH_TOKEN, authData.refreshToken)
-            .apply()
-    }
+	fun clearSession() {
+		prefs.edit().clear().apply()
+	}
 
-    fun getAuthData(): AuthData? {
-        val json = prefs.getString(KEY_AUTH_DATA, null) ?: return null
-        return runCatching { Gson().fromJson(json, AuthData::class.java) }.getOrNull()
-    }
+	fun getUserId(): Long = prefs.getLong("user_id", -1)
 
-    fun isLoggedIn(): Boolean {
-        return !prefs.getString(KEY_ACCESS_TOKEN, null).isNullOrBlank()
-    }
-
-    fun clearSession() {
-        prefs.edit().clear().apply()
-    }
-
-    companion object {
-        private const val PREF_NAME = "wildcats_lounge_session"
-        private const val KEY_AUTH_DATA = "auth_data"
-        private const val KEY_ACCESS_TOKEN = "access_token"
-        private const val KEY_REFRESH_TOKEN = "refresh_token"
-    }
+	fun getUser(): UserData? {
+		val userId = prefs.getLong("user_id", -1)
+		if (userId <= 0) return null
+		return UserData(
+			id = userId,
+			email = prefs.getString("user_email", "") ?: "",
+			firstname = prefs.getString("user_firstname", "") ?: "",
+			lastname = prefs.getString("user_lastname", "") ?: "",
+			studentId = prefs.getString("user_student_id", null),
+			role = prefs.getString("user_role", null)
+		)
+	}
 }

@@ -7,140 +7,94 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import edu.cit.canadilla.wildcatslounge.mobile.R
 import edu.cit.canadilla.wildcatslounge.mobile.model.RegisterRequest
-import edu.cit.canadilla.wildcatslounge.mobile.network.RetrofitClient
 import edu.cit.canadilla.wildcatslounge.mobile.repository.AuthRepository
 import edu.cit.canadilla.wildcatslounge.mobile.util.InputValidators
 import kotlinx.coroutines.launch
 
 class RegisterActivity : AppCompatActivity() {
+	private val authRepository = AuthRepository()
 
-    private lateinit var etFirstName: EditText
-    private lateinit var etLastName: EditText
-    private lateinit var etEmail: EditText
-    private lateinit var etStudentId: EditText
-    private lateinit var etPassword: EditText
-    private lateinit var etConfirmPassword: EditText
-    private lateinit var tvStatus: TextView
-    private lateinit var btnRegister: Button
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setContentView(R.layout.activity_register)
 
-    private val authRepository = AuthRepository(RetrofitClient.authApi)
+		val etFirstName = findViewById<EditText>(R.id.etFirstName)
+		val etLastName = findViewById<EditText>(R.id.etLastName)
+		val etEmail = findViewById<EditText>(R.id.etEmail)
+		val etStudentId = findViewById<EditText>(R.id.etStudentId)
+		val etPassword = findViewById<EditText>(R.id.etPassword)
+		val etConfirmPassword = findViewById<EditText>(R.id.etConfirmPassword)
+		val tvStatus = findViewById<TextView>(R.id.tvStatus)
+		val btnRegister = findViewById<Button>(R.id.btnRegister)
+		val tvGoLogin = findViewById<TextView>(R.id.tvGoLogin)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+		tvGoLogin.setOnClickListener {
+			startActivity(Intent(this, LoginActivity::class.java))
+			finish()
+		}
 
-        bindViews()
-        setupListeners()
-    }
+		btnRegister.setOnClickListener {
+			tvStatus.visibility = View.GONE
 
-    private fun bindViews() {
-        etFirstName = findViewById(R.id.etFirstName)
-        etLastName = findViewById(R.id.etLastName)
-        etEmail = findViewById(R.id.etEmail)
-        etStudentId = findViewById(R.id.etStudentId)
-        etPassword = findViewById(R.id.etPassword)
-        etConfirmPassword = findViewById(R.id.etConfirmPassword)
-        tvStatus = findViewById(R.id.tvStatus)
-        btnRegister = findViewById(R.id.btnRegister)
-    }
+			val firstName = etFirstName.text.toString().trim()
+			val lastName = etLastName.text.toString().trim()
+			val email = etEmail.text.toString().trim()
+			val studentId = etStudentId.text.toString().trim()
+			val password = etPassword.text.toString().trim()
+			val confirmPassword = etConfirmPassword.text.toString().trim()
 
-    private fun setupListeners() {
-        findViewById<TextView>(R.id.tvGoLogin).setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
+			if (firstName.isBlank() || lastName.isBlank() || email.isBlank() || password.isBlank()) {
+				tvStatus.text = "All required fields must be filled."
+				tvStatus.visibility = View.VISIBLE
+				return@setOnClickListener
+			}
 
-        btnRegister.setOnClickListener {
-            submitRegistration()
-        }
-    }
+			if (!InputValidators.isValidEmail(email)) {
+				tvStatus.text = "Enter a valid email."
+				tvStatus.visibility = View.VISIBLE
+				return@setOnClickListener
+			}
 
-    private fun submitRegistration() {
-        val firstName = etFirstName.text.toString().trim()
-        val lastName = etLastName.text.toString().trim()
-        val email = etEmail.text.toString().trim()
-        val studentIdRaw = etStudentId.text.toString().trim()
-        val password = etPassword.text.toString()
-        val confirmPassword = etConfirmPassword.text.toString()
+			if (studentId.isNotEmpty() && !InputValidators.isValidStudentId(studentId)) {
+				tvStatus.text = "Student ID must be in format ##-####-###."
+				tvStatus.visibility = View.VISIBLE
+				return@setOnClickListener
+			}
 
-        when {
-            firstName.length < 2 -> showStatus("First name must be at least 2 characters", isError = true)
-            lastName.length < 2 -> showStatus("Last name must be at least 2 characters", isError = true)
-            !InputValidators.isValidEmail(email) -> showStatus("Please enter a valid email", isError = true)
-            studentIdRaw.isNotBlank() && !InputValidators.isValidStudentId(studentIdRaw) -> {
-                showStatus("Student ID format must be ##-####-###", isError = true)
-            }
-            !InputValidators.isValidPassword(password) -> showStatus("Password must be at least 6 characters", isError = true)
-            password != confirmPassword -> showStatus("Passwords do not match", isError = true)
-            else -> {
-                showStatus(null, isError = false)
-                setLoading(true)
+			if (password.length < 6) {
+				tvStatus.text = "Password must be at least 6 characters."
+				tvStatus.visibility = View.VISIBLE
+				return@setOnClickListener
+			}
 
-                val studentId = studentIdRaw.ifBlank { null }
+			if (password != confirmPassword) {
+				tvStatus.text = "Passwords do not match."
+				tvStatus.visibility = View.VISIBLE
+				return@setOnClickListener
+			}
 
-                lifecycleScope.launch {
-                    val result = authRepository.register(
-                        RegisterRequest(
-                            email = email,
-                            password = password,
-                            firstname = firstName,
-                            lastname = lastName,
-                            studentId = studentId
-                        )
-                    )
+			lifecycleScope.launch {
+				val response = authRepository.register(
+					RegisterRequest(email, password, firstName, lastName, studentId.ifBlank { null })
+				)
 
-                    setLoading(false)
-
-                    if (result.isSuccess) {
-                        showStatus("Registration successful! Redirecting to login...", isError = false)
-                        etFirstName.text?.clear()
-                        etLastName.text?.clear()
-                        etEmail.text?.clear()
-                        etStudentId.text?.clear()
-                        etPassword.text?.clear()
-                        etConfirmPassword.text?.clear()
-
-                        tvStatus.postDelayed({
-                            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
-                            finish()
-                        }, 1200)
-                    } else {
-                        showStatus(result.exceptionOrNull()?.message ?: "Registration failed", isError = true)
-                    }
-                }
-            }
-        }
-    }
-
-    private fun showStatus(message: String?, isError: Boolean) {
-        if (message.isNullOrBlank()) {
-            tvStatus.visibility = View.GONE
-            return
-        }
-
-        tvStatus.visibility = View.VISIBLE
-        tvStatus.text = message
-        if (isError) {
-            tvStatus.setTextColor(ContextCompat.getColor(this, R.color.wildcats_error))
-            tvStatus.setBackgroundResource(R.drawable.bg_status_error)
-        } else {
-            tvStatus.setTextColor(ContextCompat.getColor(this, R.color.wildcats_success))
-            tvStatus.setBackgroundResource(R.drawable.bg_status_success)
-        }
-    }
-
-    private fun setLoading(isLoading: Boolean) {
-        btnRegister.isEnabled = !isLoading
-        btnRegister.text = if (isLoading) "Creating account..." else "Create Account"
-        etFirstName.isEnabled = !isLoading
-        etLastName.isEnabled = !isLoading
-        etEmail.isEnabled = !isLoading
-        etStudentId.isEnabled = !isLoading
-        etPassword.isEnabled = !isLoading
-        etConfirmPassword.isEnabled = !isLoading
-    }
+				if (response.success) {
+					tvStatus.text = "Registration successful. Redirecting to login..."
+					tvStatus.visibility = View.VISIBLE
+					tvStatus.setTextColor(getColor(R.color.wildcats_success))
+					tvStatus.postDelayed({
+						startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+						finish()
+					}, 1500)
+				} else {
+					tvStatus.text = response.error ?: "Registration failed."
+					tvStatus.visibility = View.VISIBLE
+					tvStatus.setTextColor(getColor(R.color.wildcats_error))
+				}
+			}
+		}
+	}
 }

@@ -1,51 +1,51 @@
 package edu.cit.canadilla.wildcatslounge.mobile.ui
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.cit.canadilla.wildcatslounge.mobile.R
+import edu.cit.canadilla.wildcatslounge.mobile.ui.fragments.CartFragment
+import edu.cit.canadilla.wildcatslounge.mobile.ui.fragments.EventsFragment
+import edu.cit.canadilla.wildcatslounge.mobile.ui.fragments.HomeFragment
+import edu.cit.canadilla.wildcatslounge.mobile.ui.fragments.MenuFragment
+import edu.cit.canadilla.wildcatslounge.mobile.ui.fragments.ProfileFragment
 import edu.cit.canadilla.wildcatslounge.mobile.util.SessionManager
 
 class DashboardActivity : AppCompatActivity() {
+	private lateinit var sessionManager: SessionManager
 
-    private lateinit var sessionManager: SessionManager
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setContentView(R.layout.activity_dashboard)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboard)
+		sessionManager = SessionManager(this)
+		val user = sessionManager.getUser()
 
-        sessionManager = SessionManager(this)
-        val authData = sessionManager.getAuthData()
+		val greetingView = findViewById<TextView>(R.id.tvGreeting)
+		greetingView.text = "Good day, ${user?.firstname ?: "Guest"}"
 
-        if (authData == null) {
-            redirectToLogin()
-            return
-        }
+		val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+		bottomNav.setOnItemSelectedListener { item ->
+			when (item.itemId) {
+				R.id.nav_home -> switchFragment(HomeFragment())
+				R.id.nav_menu -> switchFragment(MenuFragment())
+				R.id.nav_cart -> switchFragment(CartFragment())
+				R.id.nav_events -> switchFragment(EventsFragment())
+				R.id.nav_profile -> switchFragment(ProfileFragment())
+			}
+			true
+		}
 
-        findViewById<TextView>(R.id.tvName).text = "Name: ${authData.user.firstname} ${authData.user.lastname}"
-        findViewById<TextView>(R.id.tvEmail).text = "Email: ${authData.user.email}"
+		if (savedInstanceState == null) {
+			bottomNav.selectedItemId = R.id.nav_home
+		}
+	}
 
-        val studentIdText = authData.user.studentId?.takeIf { it.isNotBlank() } ?: "Not provided"
-        findViewById<TextView>(R.id.tvStudentId).text = "Student ID: $studentIdText"
-
-        val roleText = authData.user.role?.replaceFirstChar { it.uppercaseChar() } ?: "Unknown"
-        findViewById<TextView>(R.id.tvRole).text = "Role: $roleText"
-
-        findViewById<Button>(R.id.btnLogout).setOnClickListener {
-            sessionManager.clearSession()
-            openLogoutSuccessScreen()
-        }
-    }
-
-    private fun openLogoutSuccessScreen() {
-        startActivity(Intent(this, LogoutSuccessActivity::class.java))
-        finishAffinity()
-    }
-
-    private fun redirectToLogin() {
-        startActivity(Intent(this, LoginActivity::class.java))
-        finishAffinity()
-    }
+	private fun switchFragment(fragment: Fragment) {
+		supportFragmentManager.beginTransaction()
+			.replace(R.id.fragmentContainer, fragment)
+			.commit()
+	}
 }

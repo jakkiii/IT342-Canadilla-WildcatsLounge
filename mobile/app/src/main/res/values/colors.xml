@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="wildcats_blue">#001C98</color>
-    <color name="wildcats_blue_dark">#0025B8</color>
-    <color name="wildcats_cream">#FDFBF7</color>
-    <color name="wildcats_latte">#E5D3B3</color>
-    <color name="wildcats_success">#10B981</color>
-    <color name="wildcats_error">#EF4444</color>
-    <color name="text_primary">#1F2937</color>
-    <color name="text_secondary">#6B7280</color>
-    <color name="white">#FFFFFF</color>
+	<color name="wildcats_blue">#001C98</color>
+	<color name="wildcats_cream">#FDFBF7</color>
+	<color name="text_primary">#10203B</color>
+	<color name="text_secondary">#6B7280</color>
+	<color name="border_light">#E5D3B3</color>
+	<color name="wildcats_success">#10B981</color>
+	<color name="wildcats_error">#EF4444</color>
+	<color name="white">#FFFFFF</color>
 </resources>

@@ -7,14 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import edu.cit.canadilla.wildcatslounge.mobile.R
 
 class LogoutSuccessActivity : AppCompatActivity() {
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setContentView(R.layout.activity_logout_success)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_logout_success)
-
-        findViewById<Button>(R.id.btnReturnLogin).setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finishAffinity()
-        }
-    }
+		findViewById<Button>(R.id.btnReturnLogin).setOnClickListener {
+			val intent = Intent(this, LoginActivity::class.java)
+			intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+			startActivity(intent)
+		}
+	}
 }

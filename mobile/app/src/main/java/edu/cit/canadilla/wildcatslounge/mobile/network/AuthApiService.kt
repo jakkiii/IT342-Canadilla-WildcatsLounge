@@ -1,18 +1,20 @@
 package edu.cit.canadilla.wildcatslounge.mobile.network
 
 import edu.cit.canadilla.wildcatslounge.mobile.model.ApiResponse
-import edu.cit.canadilla.wildcatslounge.mobile.model.AuthData
+import edu.cit.canadilla.wildcatslounge.mobile.model.AuthResponse
 import edu.cit.canadilla.wildcatslounge.mobile.model.LoginRequest
 import edu.cit.canadilla.wildcatslounge.mobile.model.RegisterRequest
-import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface AuthApiService {
+	@POST("auth/register")
+	suspend fun register(@Body request: RegisterRequest): ApiResponse<AuthResponse>
 
-    @POST("auth/register")
-    suspend fun register(@Body request: RegisterRequest): Response<ApiResponse<AuthData>>
+	@POST("auth/login")
+	suspend fun login(@Body request: LoginRequest): ApiResponse<AuthResponse>
 
-    @POST("auth/login")
-    suspend fun login(@Body request: LoginRequest): Response<ApiResponse<AuthData>>
+	@GET("auth/health")
+	suspend fun health(): ApiResponse<String>
 }

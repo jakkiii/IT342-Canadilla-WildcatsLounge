@@ -14,6 +14,14 @@ Thumbs.db
 # Build outputs (backend)
 backend/target/
 
+# Build outputs (mobile)
+mobile/.gradle/
+mobile/app/.gradle/
+mobile/app/build/
+mobile/build/
+mobile/local.properties
+mobile/app/local.properties
+
 # Node modules (web)
 web/node_modules/
 
