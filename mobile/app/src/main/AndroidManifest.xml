@@ -12,12 +12,12 @@
 		android:theme="@style/Theme.WildcatsLounge"
 		android:usesCleartextTraffic="true">
 
-		<activity android:name=".ui.RegisterActivity" />
-		<activity android:name=".ui.LogoutSuccessActivity" />
-		<activity android:name=".ui.DashboardActivity" />
+		<activity android:name=".feature.auth.ui.RegisterActivity" />
+		<activity android:name=".feature.auth.ui.LogoutSuccessActivity" />
+		<activity android:name=".feature.dashboard.ui.DashboardActivity" />
 
 		<activity
-			android:name=".ui.LoginActivity"
+			android:name=".feature.auth.ui.LoginActivity"
 			android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />

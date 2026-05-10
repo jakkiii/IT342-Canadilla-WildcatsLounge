@@ -1,0 +1,22 @@
+﻿{
+    "runId":  "20260510-015258",
+    "timestamp":  "2026-05-10T01:53:25",
+    "artifactDir":  "D:\\Documents\\WildcatsLounge\\artifacts\\ci-runs\\20260510-015258",
+    "backend":  {
+                    "exitCode":  0,
+                    "command":  "mvn -f backend/pom.xml test",
+                    "log":  "D:\\Documents\\WildcatsLounge\\artifacts\\ci-runs\\20260510-015258\\backend-test.log"
+                },
+    "web":  {
+                "exitCode":  -1073740791,
+                "command":  "npm.cmd run build (in web/)",
+                "log":  "D:\\Documents\\WildcatsLounge\\artifacts\\ci-runs\\20260510-015258\\web-build.log"
+            },
+    "mobile":  {
+                   "exitCode":  0,
+                   "command":  "gradlew -p mobile assembleDebug --stacktrace",
+                   "log":  "D:\\Documents\\WildcatsLounge\\artifacts\\ci-runs\\20260510-015258\\mobile-assemble.log",
+                   "javaHome":  "C:\\Program Files\\Java\\jdk-17"
+               },
+    "overall":  "FAIL"
+}
