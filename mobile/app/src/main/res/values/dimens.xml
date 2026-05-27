@@ -1,0 +1,11 @@
+<resources>
+	<dimen name="spacing_xs">4dp</dimen>
+	<dimen name="spacing_sm">8dp</dimen>
+	<dimen name="spacing_md">16dp</dimen>
+	<dimen name="spacing_lg">20dp</dimen>
+	<dimen name="spacing_xl">24dp</dimen>
+	<dimen name="radius_card">18dp</dimen>
+	<dimen name="radius_button">14dp</dimen>
+	<dimen name="radius_chip">12dp</dimen>
+	<dimen name="chip_stroke_width">2dp</dimen>
+</resources>

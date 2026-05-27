@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/wildcats_cream"
+	android:fillViewport="true">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:paddingBottom="24dp">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="220dp"
+			android:background="@drawable/bg_auth_gradient"
+			android:gravity="bottom"
+			android:orientation="vertical"
+			android:padding="24dp">
+
+			<ImageView
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:contentDescription="@null"
+				android:src="@drawable/ic_sparkles"
+				app:tint="@color/white" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/app_name"
+				android:textColor="@color/white"
+				android:textSize="26sp"
+				android:textStyle="bold" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:text="Welcome back. Sign in to continue."
+				android:textColor="#DCE6FF"
+				android:textSize="14sp" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="16dp"
+			android:layout_marginEnd="16dp"
+			android:layout_marginTop="-24dp"
+			android:background="@drawable/bg_card"
+			android:orientation="vertical"
+			android:padding="18dp">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Sign in"
+				android:textColor="@color/text_primary"
+				android:textSize="22sp"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/tvError"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:background="@drawable/bg_status_error"
+				android:padding="10dp"
+				android:textColor="@color/wildcats_error"
+				android:textSize="13sp"
+				android:visibility="gone" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="16dp"
+				android:text="Email or Student ID"
+				android:textColor="@color/text_secondary"
+				android:textSize="12sp"
+				android:textStyle="bold" />
+
+			<EditText
+				android:id="@+id/etIdentifier"
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:layout_marginTop="6dp"
+				android:background="@drawable/bg_input"
+				android:hint="juan@cit.edu or 22-1234-567"
+				android:inputType="text"
+				android:paddingStart="14dp"
+				android:paddingEnd="14dp"
+				android:textSize="14sp"
+				android:textColor="@color/text_primary"
+				android:textColorHint="#99A0AD" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="12dp"
+				android:text="Password"
+				android:textColor="@color/text_secondary"
+				android:textSize="12sp"
+				android:textStyle="bold" />
+
+			<EditText
+				android:id="@+id/etPassword"
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:layout_marginTop="6dp"
+				android:background="@drawable/bg_input"
+				android:hint="At least 6 characters"
+				android:inputType="textPassword"
+				android:paddingStart="14dp"
+				android:paddingEnd="14dp"
+				android:textSize="14sp"
+				android:textColor="@color/text_primary"
+				android:textColorHint="#99A0AD" />
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/btnLogin"
+				style="@style/WildcatsPrimaryButton"
+				android:layout_width="match_parent"
+				android:layout_height="52dp"
+				android:layout_marginTop="18dp"
+				android:text="Sign in"
+				app:backgroundTint="@null"
+				app:icon="@drawable/ic_profile"
+				app:iconTint="@color/white" />
+
+			<TextView
+				android:id="@+id/tvGoRegister"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_horizontal"
+				android:layout_marginTop="16dp"
+				android:text="No account yet? Create one"
+				android:textColor="@color/wildcats_blue"
+				android:textSize="13sp"
+				android:textStyle="bold" />
+		</LinearLayout>
+	</LinearLayout>
+</ScrollView>

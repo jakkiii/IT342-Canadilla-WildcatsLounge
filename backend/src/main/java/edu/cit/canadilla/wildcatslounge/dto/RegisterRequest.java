@@ -30,6 +30,7 @@ public class RegisterRequest {
     @Size(min = 2, max = 100, message = "Last name must be between 2 and 100 characters")
     private String lastname;
 
+    @NotBlank(message = "Student ID is required")
     @Pattern(regexp = "^\\d{2}-\\d{4}-\\d{3}$", message = "Student ID must follow the format ##-####-###")
     private String studentId;
 }

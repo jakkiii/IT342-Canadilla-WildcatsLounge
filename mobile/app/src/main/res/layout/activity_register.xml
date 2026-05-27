@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/wildcats_cream"
+	android:fillViewport="true">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:paddingBottom="24dp">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="220dp"
+			android:background="@drawable/bg_auth_gradient"
+			android:gravity="bottom"
+			android:orientation="vertical"
+			android:padding="24dp">
+
+			<ImageView
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:contentDescription="@null"
+				android:src="@drawable/ic_sparkles"
+				app:tint="@color/white" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/app_name"
+				android:textColor="@color/white"
+				android:textSize="26sp"
+				android:textStyle="bold" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:text="Verify your email and create your student account."
+				android:textColor="#DCE6FF"
+				android:textSize="14sp" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="16dp"
+			android:layout_marginEnd="16dp"
+			android:layout_marginTop="-24dp"
+			android:background="@drawable/bg_card"
+			android:orientation="vertical"
+			android:padding="18dp">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Create student account"
+				android:textColor="@color/text_primary"
+				android:textSize="22sp"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/tvStatus"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:background="@drawable/bg_status_success"
+				android:padding="10dp"
+				android:textColor="@color/wildcats_success"
+				android:textSize="13sp"
+				android:visibility="gone" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="16dp"
+				android:text="First Name"
+				android:textColor="@color/text_secondary"
+				android:textSize="12sp"
+				android:textStyle="bold" />
+
+			<EditText
+				android:id="@+id/etFirstName"
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:layout_marginTop="6dp"
+				android:background="@drawable/bg_input"
+				android:hint="Juan"
+				android:inputType="textPersonName"
+				android:paddingStart="14dp"
+				android:paddingEnd="14dp"
+				android:textSize="14sp"
+				android:textColor="@color/text_primary"
+				android:textColorHint="#99A0AD" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="12dp"
+				android:text="Last Name"
+				android:textColor="@color/text_secondary"
+				android:textSize="12sp"
+				android:textStyle="bold" />
+
+			<EditText
+				android:id="@+id/etLastName"
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:layout_marginTop="6dp"
+				android:background="@drawable/bg_input"
+				android:hint="Dela Cruz"
+				android:inputType="textPersonName"
+				android:paddingStart="14dp"
+				android:paddingEnd="14dp"
+				android:textSize="14sp"
+				android:textColor="@color/text_primary"
+				android:textColorHint="#99A0AD" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="12dp"
+				android:text="Email"
+				android:textColor="@color/text_secondary"
+				android:textSize="12sp"
+				android:textStyle="bold" />
+
+			<EditText
+				android:id="@+id/etEmail"
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:layout_marginTop="6dp"
+				android:background="@drawable/bg_input"
+				android:hint="juan@cit.edu"
+				android:inputType="textEmailAddress"
+				android:paddingStart="14dp"
+				android:paddingEnd="14dp"
+				android:textSize="14sp"
+				android:textColor="@color/text_primary"
+				android:textColorHint="#99A0AD" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="12dp"
+				android:text="Student ID"
+				android:textColor="@color/text_secondary"
+				android:textSize="12sp"
+				android:textStyle="bold" />
+
+			<EditText
+				android:id="@+id/etStudentId"
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:layout_marginTop="6dp"
+				android:background="@drawable/bg_input"
+				android:hint="##-####-###"
+				android:inputType="text"
+				android:paddingStart="14dp"
+				android:paddingEnd="14dp"
+				android:textSize="14sp"
+				android:textColor="@color/text_primary"
+				android:textColorHint="#99A0AD" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="12dp"
+				android:text="Password"
+				android:textColor="@color/text_secondary"
+				android:textSize="12sp"
+				android:textStyle="bold" />
+
+			<EditText
+				android:id="@+id/etPassword"
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:layout_marginTop="6dp"
+				android:background="@drawable/bg_input"
+				android:hint="At least 6 characters"
+				android:inputType="textPassword"
+				android:paddingStart="14dp"
+				android:paddingEnd="14dp"
+				android:textSize="14sp"
+				android:textColor="@color/text_primary"
+				android:textColorHint="#99A0AD" />
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="12dp"
+				android:text="Confirm Password"
+				android:textColor="@color/text_secondary"
+				android:textSize="12sp"
+				android:textStyle="bold" />
+
+			<EditText
+				android:id="@+id/etConfirmPassword"
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:layout_marginTop="6dp"
+				android:background="@drawable/bg_input"
+				android:hint="Repeat password"
+				android:inputType="textPassword"
+				android:paddingStart="14dp"
+				android:paddingEnd="14dp"
+				android:textSize="14sp"
+				android:textColor="@color/text_primary"
+				android:textColorHint="#99A0AD" />
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="16dp"
+				android:background="@drawable/bg_input"
+				android:orientation="vertical"
+				android:padding="12dp">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Email verification"
+					android:textColor="@color/text_primary"
+					android:textStyle="bold" />
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="4dp"
+					android:text="We will send a 6-digit code to your email before creating your account."
+					android:textColor="@color/text_secondary"
+					android:textSize="12sp" />
+
+				<com.google.android.material.button.MaterialButton
+					android:id="@+id/btnSendCode"
+					style="@style/WildcatsPrimaryButton"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="end"
+					android:layout_marginTop="8dp"
+					android:text="Send code"
+					app:backgroundTint="@null" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/verificationSection"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="12dp"
+				android:background="@drawable/bg_card"
+				android:gravity="center_horizontal"
+				android:orientation="vertical"
+				android:padding="12dp"
+				android:visibility="gone">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Enter 6-digit verification code"
+					android:textColor="@color/wildcats_blue"
+					android:textStyle="bold" />
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="12dp"
+					android:gravity="center"
+					android:orientation="horizontal">
+
+					<EditText android:id="@+id/etCode1" style="@style/VerificationCodeDigit" />
+					<EditText android:id="@+id/etCode2" style="@style/VerificationCodeDigit" />
+					<EditText android:id="@+id/etCode3" style="@style/VerificationCodeDigit" />
+					<EditText android:id="@+id/etCode4" style="@style/VerificationCodeDigit" />
+					<EditText android:id="@+id/etCode5" style="@style/VerificationCodeDigit" />
+					<EditText android:id="@+id/etCode6" style="@style/VerificationCodeDigit" />
+				</LinearLayout>
+			</LinearLayout>
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/btnVerify"
+				style="@style/WildcatsPrimaryButton"
+				android:layout_width="match_parent"
+				android:layout_height="52dp"
+				android:layout_marginTop="18dp"
+				android:text="Verify &amp; create account"
+				app:backgroundTint="@null"
+				app:icon="@drawable/ic_badge"
+				app:iconTint="@color/white" />
+
+			<TextView
+				android:id="@+id/tvGoLogin"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_horizontal"
+				android:layout_marginTop="16dp"
+				android:text="Already have an account? Sign in"
+				android:textColor="@color/wildcats_blue"
+				android:textSize="13sp"
+				android:textStyle="bold" />
+		</LinearLayout>
+	</LinearLayout>
+</ScrollView>

@@ -13,14 +13,21 @@ Thumbs.db
 
 # Build outputs (backend)
 backend/target/
+mobile/.gradle/
+mobile/build/
+mobile/app/build/
+mobile/local.properties
+mobile/app/local.properties
 
 # Node modules (web)
 web/node_modules/
 
-# Environment files
+# Environment files (secrets)
 .env
 .env.local
 .env*.local
+backend/.env
+web/.env.local
 
 # Backend configuration with sensitive data
 backend/src/main/resources/application.properties

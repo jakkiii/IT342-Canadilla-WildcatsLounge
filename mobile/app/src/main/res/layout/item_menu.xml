@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginBottom="12dp"
+	android:background="@drawable/bg_card"
+	android:gravity="center_vertical"
+	android:orientation="horizontal"
+	android:padding="14dp">
+
+	<FrameLayout
+		android:layout_width="48dp"
+		android:layout_height="48dp"
+		android:background="@drawable/bg_icon_chip">
+
+		<ImageView
+			android:id="@+id/ivMenuIcon"
+			android:layout_width="26dp"
+			android:layout_height="26dp"
+			android:layout_gravity="center"
+			android:contentDescription="@null"
+			android:src="@drawable/ic_local_cafe" />
+	</FrameLayout>
+
+	<LinearLayout
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="12dp"
+		android:layout_weight="1"
+		android:orientation="vertical">
+
+		<TextView
+			android:id="@+id/tvMenuName"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/text_primary"
+			android:textSize="15sp"
+			android:textStyle="bold" />
+
+		<TextView
+			android:id="@+id/tvMenuPrice"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="2dp"
+			android:textColor="@color/wildcats_blue"
+			android:textStyle="bold" />
+
+		<TextView
+			android:id="@+id/tvMenuDesc"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="2dp"
+			android:textColor="@color/text_secondary"
+			android:textSize="12sp"
+			android:maxLines="2" />
+
+		<LinearLayout
+			android:id="@+id/servingGroup"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="6dp"
+			android:orientation="horizontal"
+			android:visibility="gone" />
+	</LinearLayout>
+
+	<com.google.android.material.button.MaterialButton
+		android:id="@+id/btnAdd"
+		style="@style/WildcatsPrimaryButton"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:minWidth="76dp"
+		android:text="Add"
+		app:backgroundTint="@null"
+		app:icon="@drawable/ic_cart"
+		app:iconGravity="textStart"
+		app:iconPadding="4dp"
+		app:iconSize="16dp"
+		app:iconTint="@color/white" />
+</LinearLayout>

@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { login, type LoginData } from '@/lib/api';
-import { Loader2, Coffee, Check } from 'lucide-react';
+import { getUser, isStaff, saveSession, syncSessionCookiesFromStorage } from '@/lib/auth';
+import { Loader2, Coffee } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -15,6 +16,13 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const existingUser = getUser();
+    if (!existingUser) return;
+    syncSessionCookiesFromStorage();
+    router.replace(isStaff() ? '/admin' : '/app');
+  }, [router]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -23,12 +31,21 @@ export default function LoginPage() {
     setError('');
   };
 
+  const validateLogin = (requireCode: boolean) => {
+    if (!formData.identifier || !formData.password) {
+      return 'Email or Student ID and password are required';
+    }
+
+    return '';
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
-    if (!formData.identifier || !formData.password) {
-      setError('All fields are required');
+    const validationError = validateLogin(false);
+    if (validationError) {
+      setError(validationError);
       return;
     }
 
@@ -38,12 +55,12 @@ export default function LoginPage() {
       const response = await login(formData);
 
       if (response.success && response.data) {
-        // Store user data and tokens in localStorage
-        localStorage.setItem('user', JSON.stringify(response.data.user));
-        localStorage.setItem('accessToken', response.data.accessToken);
-        localStorage.setItem('refreshToken', response.data.refreshToken);
-        // Redirect to dashboard
-        router.push('/dashboard');
+        saveSession(response.data.user, response.data.accessToken, response.data.refreshToken);
+        if (response.data.user.role === 'staff') {
+          router.push('/admin');
+        } else {
+          router.push('/app');
+        }
       } else {
         setError(response.error || 'Login failed');
       }
@@ -76,16 +93,6 @@ export default function LoginPage() {
           <p className="text-white/70 text-sm mb-10">
             Sign in with your email or Student ID to continue.
           </p>
-          <div className="space-y-3">
-            {['Secure email validation', 'Password encrypted with BCrypt', 'JWT-secured sessions', 'Login via Email or Student ID', 'Spring Boot REST API backend'].map((f) => (
-              <div key={f} className="flex items-start gap-3">
-                <div className="mt-0.5 w-5 h-5 rounded-full bg-[#10B981]/30 flex items-center justify-center flex-shrink-0 border border-[#10B981]/40">
-                  <Check className="w-3 h-3 text-[#10B981]" />
-                </div>
-                <span className="text-white/85 text-sm">{f}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 

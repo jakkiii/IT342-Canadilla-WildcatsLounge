@@ -10,14 +10,17 @@ export default function DashboardPage() {
   const [user, setUser] = useState<UserData | null>(null);
 
   useEffect(() => {
-    // Get user from localStorage
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    } else {
-      // Redirect to login if no user found
-      router.push('/login');
+      const parsed = JSON.parse(storedUser);
+      if (parsed.role === 'staff') {
+        router.replace('/admin');
+        return;
+      }
+      router.replace('/app');
+      return;
     }
+    router.push('/login');
   }, [router]);
 
   const handleLogout = () => {

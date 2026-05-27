@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/wildcats_cream"
+	android:fillViewport="true">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:padding="@dimen/spacing_md">
+
+		<include layout="@layout/include_page_header" />
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_md"
+			android:background="@drawable/bg_hero_card"
+			android:gravity="center_vertical"
+			android:orientation="horizontal"
+			android:padding="@dimen/spacing_lg">
+
+			<TextView
+				android:id="@+id/tvInitials"
+				android:layout_width="56dp"
+				android:layout_height="56dp"
+				android:background="@drawable/bg_avatar_circle"
+				android:gravity="center"
+				android:textColor="@color/white"
+				android:textSize="20sp"
+				android:textStyle="bold" />
+
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="14dp"
+				android:layout_weight="1"
+				android:orientation="vertical">
+
+				<TextView
+					android:id="@+id/tvFullName"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textColor="@color/white"
+					android:textSize="18sp"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/tvEmail"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="4dp"
+					android:textColor="#CCE0FF"
+					android:textSize="13sp" />
+			</LinearLayout>
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_md"
+			android:background="@drawable/bg_card"
+			android:orientation="vertical"
+			android:padding="4dp">
+
+			<include
+				android:id="@+id/rowStudentId"
+				layout="@layout/include_profile_row" />
+
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_marginHorizontal="12dp"
+				android:background="@color/border_light" />
+
+			<include
+				android:id="@+id/rowRole"
+				layout="@layout/include_profile_row" />
+		</LinearLayout>
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/btnLogout"
+			style="@style/WildcatsOutlinedButton"
+			android:layout_width="match_parent"
+			android:layout_height="52dp"
+			android:layout_marginTop="@dimen/spacing_lg"
+			android:text="@string/label_logout"
+			android:textColor="@color/wildcats_error"
+			app:backgroundTint="@null"
+			app:icon="@drawable/ic_profile"
+			app:iconTint="@color/wildcats_error"
+			app:strokeColor="@color/wildcats_error" />
+	</LinearLayout>
+</ScrollView>

@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/wildcats_cream"
+	android:clipToPadding="false"
+	android:fillViewport="true"
+	android:padding="@dimen/spacing_md"
+	android:paddingBottom="@dimen/spacing_xl">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/bg_hero_card"
+			android:orientation="vertical"
+			android:padding="@dimen/spacing_lg">
+
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<ImageView
+					android:layout_width="16dp"
+					android:layout_height="16dp"
+					android:contentDescription="@null"
+					android:src="@drawable/ic_sparkles" />
+
+				<TextView
+					android:id="@+id/tvGreetingLine"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="6dp"
+					android:text="Good afternoon"
+					android:textColor="#B3FFFFFF"
+					android:textSize="12sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<TextView
+				android:id="@+id/tvHomeTitle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:text="Hello, Student!"
+				android:textColor="@color/white"
+				android:textSize="24sp"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/tvHomeSubtitle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="6dp"
+				android:text="Grab a drink, check the lounge vibe, and plan your campus break."
+				android:textColor="#B3FFFFFF"
+				android:textSize="13sp" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/cardLounge"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_md"
+			android:background="@drawable/bg_lounge_green"
+			android:gravity="center_vertical"
+			android:orientation="horizontal"
+			android:padding="@dimen/spacing_md">
+
+			<FrameLayout
+				android:layout_width="48dp"
+				android:layout_height="48dp"
+				android:background="@drawable/bg_refresh_button">
+
+				<ImageView
+					android:id="@+id/ivLoungeIcon"
+					android:layout_width="28dp"
+					android:layout_height="28dp"
+					android:layout_gravity="center"
+					android:contentDescription="@null"
+					android:src="@drawable/ic_activity" />
+			</FrameLayout>
+
+			<LinearLayout
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="12dp"
+				android:layout_weight="1"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:letterSpacing="0.08"
+					android:text="LOUNGE OCCUPANCY"
+					android:textColor="@color/text_secondary"
+					android:textSize="10sp"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/tvLoungeStatus"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:text="Available"
+					android:textColor="@color/wildcats_success"
+					android:textSize="20sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<ImageButton
+				android:id="@+id/btnRefreshLounge"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:background="@drawable/bg_refresh_button"
+				android:contentDescription="Refresh"
+				android:padding="8dp"
+				android:src="@drawable/ic_refresh" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/cardActiveOrder"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_md"
+			android:background="@drawable/bg_card"
+			android:orientation="vertical"
+			android:padding="@dimen/spacing_md"
+			android:visibility="gone">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<FrameLayout
+					android:layout_width="44dp"
+					android:layout_height="44dp"
+					android:background="@drawable/bg_icon_chip">
+
+					<ImageView
+						android:layout_width="24dp"
+						android:layout_height="24dp"
+						android:layout_gravity="center"
+						android:contentDescription="@null"
+						android:src="@drawable/ic_receipt" />
+				</FrameLayout>
+
+				<LinearLayout
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="12dp"
+					android:layout_weight="1"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:letterSpacing="0.08"
+						android:text="CURRENT ORDER"
+						android:textColor="@color/text_secondary"
+						android:textSize="10sp"
+						android:textStyle="bold" />
+
+					<TextView
+						android:id="@+id/tvOrderNumber"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="@color/text_primary"
+						android:textStyle="bold" />
+
+					<TextView
+						android:id="@+id/tvOrderStatus"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="2dp"
+						android:textColor="@color/text_secondary"
+						android:textSize="12sp" />
+				</LinearLayout>
+
+				<TextView
+					android:id="@+id/tvOrderBadge"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/bg_icon_chip"
+					android:paddingHorizontal="10dp"
+					android:paddingVertical="4dp"
+					android:text="Preparing"
+					android:textColor="@color/wildcats_warning"
+					android:textSize="11sp"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/btnViewOrders"
+				style="@style/WildcatsOutlinedButton"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="12dp"
+				android:text="@string/label_view_orders"
+				app:backgroundTint="@null"
+				app:icon="@drawable/ic_receipt"
+				app:iconGravity="textStart"
+				app:iconPadding="8dp"
+				app:iconTint="@color/wildcats_blue" />
+		</LinearLayout>
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/btnStartOrder"
+			style="@style/WildcatsPrimaryButton"
+			android:layout_width="match_parent"
+			android:layout_height="56dp"
+			android:layout_marginTop="@dimen/spacing_md"
+			android:text="@string/label_start_order"
+			app:backgroundTint="@null"
+			app:icon="@drawable/ic_local_cafe"
+			app:iconGravity="textStart"
+			app:iconPadding="10dp"
+			app:iconTint="@color/white" />
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_md"
+			android:background="@drawable/bg_card"
+			android:orientation="vertical"
+			android:padding="@dimen/spacing_md">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<FrameLayout
+					android:layout_width="36dp"
+					android:layout_height="36dp"
+					android:background="@drawable/bg_icon_chip">
+
+					<ImageView
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:layout_gravity="center"
+						android:contentDescription="@null"
+						android:src="@drawable/ic_events" />
+				</FrameLayout>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="10dp"
+					android:text="Today's Events"
+					android:textColor="@color/text_primary"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<TextView
+				android:id="@+id/tvFeaturedEvent"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:textColor="@color/text_primary"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/tvFeaturedEventMeta"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
+				android:textColor="@color/text_secondary"
+				android:textSize="13sp" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_md"
+			android:background="@drawable/bg_card"
+			android:orientation="vertical"
+			android:padding="@dimen/spacing_md">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal">
+
+				<FrameLayout
+					android:layout_width="36dp"
+					android:layout_height="36dp"
+					android:background="@drawable/bg_icon_chip">
+
+					<ImageView
+						android:layout_width="20dp"
+						android:layout_height="20dp"
+						android:layout_gravity="center"
+						android:contentDescription="@null"
+						android:src="@drawable/ic_local_cafe" />
+				</FrameLayout>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="10dp"
+					android:text="From the Menu"
+					android:textColor="@color/text_primary"
+					android:textStyle="bold" />
+			</LinearLayout>
+
+			<TextView
+				android:id="@+id/tvFeaturedMenu"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:textColor="@color/wildcats_blue"
+				android:textSize="16sp"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/tvFeaturedMenuDesc"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
+				android:textColor="@color/text_secondary"
+				android:textSize="13sp" />
+		</LinearLayout>
+	</LinearLayout>
+</ScrollView>

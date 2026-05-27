@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/wildcats_cream">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:padding="@dimen/spacing_md">
+
+		<include
+			android:id="@+id/menuPageHeader"
+			layout="@layout/include_page_header" />
+
+		<HorizontalScrollView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_sm"
+			android:scrollbars="none">
+
+			<LinearLayout
+				android:id="@+id/menuFilterGroup"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<Button
+					android:id="@+id/filterAll"
+					style="@style/MenuFilterTab"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="All" />
+
+				<Button
+					android:id="@+id/filterCoffee"
+					style="@style/MenuFilterTab"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="8dp"
+					android:text="Coffees" />
+
+				<Button
+					android:id="@+id/filterLatte"
+					style="@style/MenuFilterTab"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="8dp"
+					android:text="Drinks" />
+
+				<Button
+					android:id="@+id/filterMatcha"
+					style="@style/MenuFilterTab"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="8dp"
+					android:text="Treats" />
+
+				<Button
+					android:id="@+id/filterBeverages"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:visibility="gone" />
+
+				<Button
+					android:id="@+id/filterAddOns"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:visibility="gone" />
+			</LinearLayout>
+		</HorizontalScrollView>
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/recyclerMenu"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_marginTop="@dimen/spacing_sm"
+			android:layout_weight="1"
+			android:clipToPadding="false"
+			android:paddingBottom="16dp"
+			android:scrollbars="vertical" />
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/menuStickyCheckout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom"
+		android:background="@drawable/bg_header_gradient"
+		android:elevation="8dp"
+		android:gravity="center_vertical"
+		android:orientation="horizontal"
+		android:padding="@dimen/spacing_md"
+		android:visibility="gone">
+
+		<FrameLayout
+			android:layout_width="40dp"
+			android:layout_height="40dp"
+			android:background="@drawable/bg_refresh_button">
+
+			<ImageView
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:layout_gravity="center"
+				android:contentDescription="@null"
+				android:src="@drawable/ic_cart"
+				app:tint="@color/white" />
+		</FrameLayout>
+
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="12dp"
+			android:layout_weight="1"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/tvCartSummary"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="0 items"
+				android:textColor="@color/white"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/tvCartSubtotal"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Subtotal ₱0"
+				android:textColor="#CCE0FF"
+				android:textSize="12sp" />
+		</LinearLayout>
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/btnCheckOrder"
+			style="@style/WildcatsOutlinedButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:backgroundTint="@null"
+			android:text="@string/label_check_order"
+			android:textColor="@color/wildcats_blue"
+			app:backgroundTint="@null" />
+	</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/wildcats_cream"
+	android:gravity="center"
+	android:orientation="vertical"
+	android:padding="24dp">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/bg_card"
+		android:orientation="vertical"
+		android:padding="20dp">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/app_name"
+			android:textColor="@color/wildcats_blue"
+			android:textSize="22sp"
+			android:textStyle="bold" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="14dp"
+			android:text="Successfully logged out"
+			android:textColor="@color/text_primary"
+			android:textSize="20sp"
+			android:textStyle="bold" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="6dp"
+			android:text="Your session has ended. Return to login to continue."
+			android:textColor="@color/text_secondary" />
+
+		<Button
+			android:id="@+id/btnReturnLogin"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:layout_marginTop="18dp"
+			android:background="@drawable/bg_primary_button"
+			android:text="Return to Login"
+			android:textAllCaps="false"
+			android:textColor="@color/white"
+			android:textStyle="bold" />
+	</LinearLayout>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package edu.cit.canadilla.wildcatslounge.util;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
+import java.util.Optional;
 
 @Component
 public class JwtUtil {
@@ -48,5 +50,22 @@ public class JwtUtil {
                 .setExpiration(new Date(System.currentTimeMillis() + refreshTokenExpiry))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
+    }
+
+    public Optional<String> extractEmail(String token) {
+        try {
+            Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(getSigningKey())
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+            return Optional.ofNullable(claims.getSubject());
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+    }
+
+    public boolean isValid(String token) {
+        return extractEmail(token).isPresent();
     }
 }

@@ -1,0 +1,20 @@
+<resources>
+	<color name="wildcats_blue">#001C98</color>
+	<color name="wildcats_blue_light">#0030D4</color>
+	<color name="wildcats_blue_dark">#000D6B</color>
+	<color name="wildcats_cream">#FDFBF7</color>
+	<color name="wildcats_latte">#E5D3B3</color>
+	<color name="wildcats_success">#10B981</color>
+	<color name="wildcats_warning">#F59E0B</color>
+	<color name="wildcats_error">#EF4444</color>
+	<color name="text_primary">#111827</color>
+	<color name="text_secondary">#6B7280</color>
+	<color name="text_muted">#9CA3AF</color>
+	<color name="border_light">#E5D3B3</color>
+	<color name="white">#FFFFFF</color>
+	<color name="chip_blue_bg">#1A001C98</color>
+	<color name="overlay_blue">#0D001C98</color>
+	<color name="lounge_green_bg">#1A10B981</color>
+	<color name="lounge_yellow_bg">#1AF59E0B</color>
+	<color name="lounge_red_bg">#1AEF4444</color>
+</resources>

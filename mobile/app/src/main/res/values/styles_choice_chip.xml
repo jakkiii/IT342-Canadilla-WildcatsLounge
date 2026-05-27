@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="WildcatsChoiceChip" parent="Widget.Material3.Chip.Filter">
+		<item name="android:textStyle">bold</item>
+		<item name="android:textSize">13sp</item>
+		<item name="android:textColor">@color/chip_choice_text</item>
+		<item name="chipBackgroundColor">@color/chip_choice_bg</item>
+		<item name="chipStrokeColor">@color/chip_choice_stroke</item>
+		<item name="chipStrokeWidth">2dp</item>
+		<item name="chipCornerRadius">@dimen/radius_chip</item>
+		<item name="chipMinHeight">40dp</item>
+		<item name="checkedIconVisible">false</item>
+		<item name="chipIconVisible">false</item>
+		<item name="ensureMinTouchTargetSize">false</item>
+		<item name="rippleColor">@color/overlay_blue</item>
+	</style>
+</resources>
